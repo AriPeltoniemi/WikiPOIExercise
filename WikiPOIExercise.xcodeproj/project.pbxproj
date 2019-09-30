@@ -15,6 +15,7 @@
 		02D51B22234201B500D8457A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D51B20234201B500D8457A /* LaunchScreen.storyboard */; };
 		02D51B2D234201B500D8457A /* WikiPOIExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B2C234201B500D8457A /* WikiPOIExerciseTests.swift */; };
 		02D51B38234201B500D8457A /* WikiPOIExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B37234201B500D8457A /* WikiPOIExerciseUITests.swift */; };
+		02D51B4A23420A4C00D8457A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 02D51B4923420A4C00D8457A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		02D51B33234201B500D8457A /* WikiPOIExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiPOIExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D51B37234201B500D8457A /* WikiPOIExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPOIExerciseUITests.swift; sourceTree = "<group>"; };
 		02D51B39234201B500D8457A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02D51B4923420A4C00D8457A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		02D51B09234201B300D8457A = {
 			isa = PBXGroup;
 			children = (
+				02D51B4923420A4C00D8457A /* README.md */,
 				02D51B14234201B300D8457A /* WikiPOIExercise */,
 				02D51B2B234201B500D8457A /* WikiPOIExerciseTests */,
 				02D51B36234201B500D8457A /* WikiPOIExerciseUITests */,
@@ -242,6 +245,7 @@
 			files = (
 				02D51B22234201B500D8457A /* LaunchScreen.storyboard in Resources */,
 				02D51B1F234201B500D8457A /* Preview Assets.xcassets in Resources */,
+				02D51B4A23420A4C00D8457A /* README.md in Resources */,
 				02D51B1C234201B500D8457A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
