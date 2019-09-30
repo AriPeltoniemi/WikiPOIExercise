@@ -41,7 +41,22 @@ struct MapView: UIViewRepresentable {
         view.setRegion(region, animated: true)
         
         
+        //Add annotation for each items on POI list
         
+        for wikiPOI in wikiPOIs {
+            
+            //print(wikiPOI.title)
+
+            let coordinate = CLLocationCoordinate2D(latitude: wikiPOI.lat, longitude: wikiPOI.lon)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = wikiPOI.title
+            //annotation.subtitle = "Alaotsikko2"
+            view.addAnnotation(annotation)
+
+        }
+        
+        /*
         
          let annotation = MKPointAnnotation()
          annotation.coordinate = coordinate
@@ -55,7 +70,7 @@ struct MapView: UIViewRepresentable {
         annotation2.title = "Title2"
        annotation2.subtitle = "Alaotsikko2"
        view.addAnnotation(annotation2)
-
+*/
         
     }
     

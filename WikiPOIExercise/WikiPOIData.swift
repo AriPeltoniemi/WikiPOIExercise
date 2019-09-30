@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import SwiftUI
+
+
+
+struct WikiPOI: Decodable {
+    let pageid: String
+    let title: String
+    let lat: Double
+    let lon: Double
+}
+
+
