@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0256662223422F160087ECF7 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256662123422F160087ECF7 /* MapView.swift */; };
+		0256662223422F160087ECF7 /* POIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256662123422F160087ECF7 /* POIMapView.swift */; };
 		02D51B16234201B300D8457A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B15234201B300D8457A /* AppDelegate.swift */; };
 		02D51B18234201B300D8457A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B17234201B300D8457A /* SceneDelegate.swift */; };
 		02D51B1A234201B300D8457A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B19234201B300D8457A /* ContentView.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0256662123422F160087ECF7 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0256662123422F160087ECF7 /* POIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMapView.swift; sourceTree = "<group>"; };
 		02D51B12234201B300D8457A /* WikiPOIExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiPOIExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D51B15234201B300D8457A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D51B17234201B300D8457A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				02D51B15234201B300D8457A /* AppDelegate.swift */,
 				02D51B17234201B300D8457A /* SceneDelegate.swift */,
 				02D51B19234201B300D8457A /* ContentView.swift */,
-				0256662123422F160087ECF7 /* MapView.swift */,
+				0256662123422F160087ECF7 /* POIMapView.swift */,
 				02D51B4B23420D3F00D8457A /* WikiPOIData.swift */,
 				02D51B1B234201B500D8457A /* Assets.xcassets */,
 				02D51B20234201B500D8457A /* LaunchScreen.storyboard */,
@@ -279,7 +279,7 @@
 			files = (
 				02D51B16234201B300D8457A /* AppDelegate.swift in Sources */,
 				02D51B18234201B300D8457A /* SceneDelegate.swift in Sources */,
-				0256662223422F160087ECF7 /* MapView.swift in Sources */,
+				0256662223422F160087ECF7 /* POIMapView.swift in Sources */,
 				02D51B4C23420D3F00D8457A /* WikiPOIData.swift in Sources */,
 				02D51B1A234201B300D8457A /* ContentView.swift in Sources */,
 			);

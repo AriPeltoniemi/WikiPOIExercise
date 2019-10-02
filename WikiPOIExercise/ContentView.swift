@@ -7,33 +7,66 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
-/*
-struct WikiPOI: Decodable {
-       let pageid: String
-       let title: String
-       let lat: Double
-       let lon: Double
-   }
-*/
 
 struct ContentView: View {
     
-    @State var wikiPOIs: [WikiPOI] = [
-        WikiPOI(pageid: "1234", title: "otsikko1", lat: 60.200, lon: 24.800),
-        WikiPOI(pageid: "1222", title: "otsikko3", lat: 60.250, lon: 24.750),
-        WikiPOI(pageid: "4567", title: "otsikko2", lat: 60.300, lon: 24.700)
-    ]
+  
 
    
+    @State var wikiPOIs: [WikiPOI] = WikiPOIData()
+        
+        /*
+        [
+        WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.2,
+                                                  longitude: 24.8),
+               title: "WikiPOI Täällä",
+               subtitle: "Big Smoke",
+               action: { print("Hey mate!") } ),
+
+        WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.3,
+                                                  longitude: 24.9),
+               title: "WikiPOI2 ",
+               subtitle: "Big Smoke",
+               action: { print("Hey mate!") } ),
+
+
+    ]
+ 
+ */
+    
+    @State var selectedWikiPOI: WikiPOI?
+    
     var body: some View {
         
         ZStack {
 
             //Display full screen map with wiki POIs as annotations
-            MapView(wikiPOIs: $wikiPOIs)
+            POIMapView(wikiPOIs: $wikiPOIs, selectedWikiPOI: $selectedWikiPOI)
                 .edgesIgnoringSafeArea(.top)
                 .edgesIgnoringSafeArea(.bottom)
+      
+            VStack {
+                Spacer()
+                
+                if selectedWikiPOI != nil {
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(.white)
+                            .frame(width: 400.0, height: 200.0, alignment: .bottom)
+                            .padding(.bottom, -40)
+                        Text(String(selectedWikiPOI?.title ?? "TODO Localization"))
+                            
+                    }
+                    
+                }
+                
+            }
+        
+        
         }
     }
 }
