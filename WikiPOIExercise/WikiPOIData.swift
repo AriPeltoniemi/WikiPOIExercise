@@ -49,29 +49,3 @@ class WikiPOI: NSObject, MKAnnotation {
        }
 }
 
-
-class WikiPOIData {
-
-    
-
- var wikiPOIs: [WikiPOI] = [
-     WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.2,
-                                               longitude: 24.8),
-            title: "WikiPOI Täällä",
-            subtitle: " ",
-            action: { print("WIkiPOI") } ),
-
-     WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.3,
-                                               longitude: 24.9),
-            title: "WikiPOI2 ",
-            subtitle: " ",
-            action: { print("WikiPOI2") } ),
-
-
-    ]
-    
-    func init() {
-    
-        return wikiPOIs
-    }
-}

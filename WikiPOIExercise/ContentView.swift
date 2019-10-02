@@ -16,9 +16,9 @@ struct ContentView: View {
   
 
    
-    @State var wikiPOIs: [WikiPOI] = WikiPOIData()
+    @State var wikiPOIs: [WikiPOI] =
         
-        /*
+        
         [
         WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.2,
                                                   longitude: 24.8),
@@ -35,7 +35,7 @@ struct ContentView: View {
 
     ]
  
- */
+ 
     
     @State var selectedWikiPOI: WikiPOI?
     
