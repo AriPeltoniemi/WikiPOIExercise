@@ -15,32 +15,52 @@ import Combine
 
 //Struc for page data from WIKI API
 
+struct Image: Decodable {
+    let ns: Int?
+    let title: String?
+}
+
 struct Page:   Decodable {
     let pageid: Int
     let title: String
-    let description: String
+    let description: String?
+    let images: [Image]?
+    init() {
+        pageid = 0
+        title = ""
+        description = ""
+        images = []
+    }
 }
-
-
 
 
 class WikiPageManager : ObservableObject {
     var objectWillChange = PassthroughSubject<WikiPageManager, Never>()
 
     
-    //For storing & decoding wiki API returned page data
-    
-    @Published var page: Page? {
-    
+    @Published private(set) var page = Page() {
           didSet {
               objectWillChange.send(self)
           }
       }
     
-    init() {
-        guard let url = URL(string: "https://en.wikipedia.org/w/api.php?action=query&prop=info%7Cdescription%7Cimages&pageids=537137&format=json") else {
-            return
-        }
+    var pageFetched: Bool = false
+  
+    
+    //--------------------------------------------
+    //Fetch wiki page data as JSON from wiki API
+    //--------------------------------------------
+
+    
+    func fetchPage (pageid: Int) {
+    
+        let urlString = "https://en.wikipedia.org/w/api.php?action=query&prop=info%7Cdescription%7Cimages&pageids=" + String(pageid) + "&format=json"
+        
+        print(urlString)
+        
+        guard let url = URL(string: urlString) else {
+                   return
+               }
         
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data else { return }
@@ -58,12 +78,11 @@ class WikiPageManager : ObservableObject {
             //Decode page
             
             let page = try! JSONDecoder().decode(Page.self, from: riisuttu.data(using: .utf8)!)
-            
-            print(page)
-            
+        
             DispatchQueue.main.async {
                 self.page = page
-                
+                self.pageFetched = true
+                print(page)
             }
         }.resume()
     }

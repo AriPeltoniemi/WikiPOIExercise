@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023D1252234A4C3000F69310 /* WikImageIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D1251234A4C3000F69310 /* WikImageIView.swift */; };
 		0256662223422F160087ECF7 /* POIMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0256662123422F160087ECF7 /* POIMapView.swift */; };
+		025666242345DF690087ECF7 /* WikiSlideOverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025666232345DF690087ECF7 /* WikiSlideOverCard.swift */; };
+		025666262345F9610087ECF7 /* WikiPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025666252345F9610087ECF7 /* WikiPageManager.swift */; };
 		02D51B16234201B300D8457A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B15234201B300D8457A /* AppDelegate.swift */; };
 		02D51B18234201B300D8457A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B17234201B300D8457A /* SceneDelegate.swift */; };
 		02D51B1A234201B300D8457A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B19234201B300D8457A /* ContentView.swift */; };
@@ -17,7 +20,7 @@
 		02D51B2D234201B500D8457A /* WikiPOIExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B2C234201B500D8457A /* WikiPOIExerciseTests.swift */; };
 		02D51B38234201B500D8457A /* WikiPOIExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B37234201B500D8457A /* WikiPOIExerciseUITests.swift */; };
 		02D51B4A23420A4C00D8457A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 02D51B4923420A4C00D8457A /* README.md */; };
-		02D51B4C23420D3F00D8457A /* WikiPOIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B4B23420D3F00D8457A /* WikiPOIData.swift */; };
+		02D51B4C23420D3F00D8457A /* WikiAPImanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D51B4B23420D3F00D8457A /* WikiAPImanager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023D1251234A4C3000F69310 /* WikImageIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikImageIView.swift; sourceTree = "<group>"; };
 		0256662123422F160087ECF7 /* POIMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMapView.swift; sourceTree = "<group>"; };
+		025666232345DF690087ECF7 /* WikiSlideOverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiSlideOverCard.swift; sourceTree = "<group>"; };
+		025666252345F9610087ECF7 /* WikiPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPageManager.swift; sourceTree = "<group>"; };
 		02D51B12234201B300D8457A /* WikiPOIExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiPOIExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D51B15234201B300D8457A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02D51B17234201B300D8457A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +60,7 @@
 		02D51B37234201B500D8457A /* WikiPOIExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPOIExerciseUITests.swift; sourceTree = "<group>"; };
 		02D51B39234201B500D8457A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D51B4923420A4C00D8457A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		02D51B4B23420D3F00D8457A /* WikiPOIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiPOIData.swift; sourceTree = "<group>"; };
+		02D51B4B23420D3F00D8457A /* WikiAPImanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiAPImanager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +113,13 @@
 			isa = PBXGroup;
 			children = (
 				02D51B15234201B300D8457A /* AppDelegate.swift */,
+				025666232345DF690087ECF7 /* WikiSlideOverCard.swift */,
+				023D1251234A4C3000F69310 /* WikImageIView.swift */,
 				02D51B17234201B300D8457A /* SceneDelegate.swift */,
 				02D51B19234201B300D8457A /* ContentView.swift */,
 				0256662123422F160087ECF7 /* POIMapView.swift */,
-				02D51B4B23420D3F00D8457A /* WikiPOIData.swift */,
+				02D51B4B23420D3F00D8457A /* WikiAPImanager.swift */,
+				025666252345F9610087ECF7 /* WikiPageManager.swift */,
 				02D51B1B234201B500D8457A /* Assets.xcassets */,
 				02D51B20234201B500D8457A /* LaunchScreen.storyboard */,
 				02D51B23234201B500D8457A /* Info.plist */,
@@ -277,11 +286,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023D1252234A4C3000F69310 /* WikImageIView.swift in Sources */,
 				02D51B16234201B300D8457A /* AppDelegate.swift in Sources */,
 				02D51B18234201B300D8457A /* SceneDelegate.swift in Sources */,
+				025666262345F9610087ECF7 /* WikiPageManager.swift in Sources */,
 				0256662223422F160087ECF7 /* POIMapView.swift in Sources */,
-				02D51B4C23420D3F00D8457A /* WikiPOIData.swift in Sources */,
+				02D51B4C23420D3F00D8457A /* WikiAPImanager.swift in Sources */,
 				02D51B1A234201B300D8457A /* ContentView.swift in Sources */,
+				025666242345DF690087ECF7 /* WikiSlideOverCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

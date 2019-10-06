@@ -14,62 +14,62 @@ import CoreLocation
 struct ContentView: View {
     
   
-
-   
-    @State var wikiPOIs: [WikiPOI] =
-        
-        
-        [
-        WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.2,
-                                                  longitude: 24.8),
-               title: "WikiPOI Täällä",
-               subtitle: "Big Smoke",
-               action: { print("Hey mate!") } ),
-
-        WikiPOI(coordinate: CLLocationCoordinate2D(latitude: 60.3,
-                                                  longitude: 24.9),
-               title: "WikiPOI2 ",
-               subtitle: "Big Smoke",
-               action: { print("Hey mate!") } ),
-
-
-    ]
- 
- 
     
+    //For storing user location and triggering action when it changes
+    @State var userWhereAbouts: UserWhereAbouts?
+
+    //Selected wiki POI, NOTE: will be set on MapView based on user selections
     @State var selectedWikiPOI: WikiPOI?
+
+    
+    //WikiAPImanager fetches POIs from WIKI, we observe it and update app main view when data changes
+    @ObservedObject var wikiAPIManager = WikiAPIManager()
+    
+    
+    //----------------------------------------------------
+    
+    // App main view. Displays map, wiki POIs on that as annotations.
+    
+    // If some POI is selected, display a sliding card for wiki page info
+    
+    //----------------------------------------------------
+    
     
     var body: some View {
+
+       
+        //wikiAPIManager.setCoordinates()
         
+
         ZStack {
 
+            
             //Display full screen map with wiki POIs as annotations
-            POIMapView(wikiPOIs: $wikiPOIs, selectedWikiPOI: $selectedWikiPOI)
+            //POIMapView(wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI, userWhereAbouts: $userWhereAbouts)
+            
+            POIMapView(wikiAPIManager: wikiAPIManager, wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI, userWhereAbouts: $userWhereAbouts)
+            
+            
+            // POIMapView(wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI)
+                         
                 .edgesIgnoringSafeArea(.top)
                 .edgesIgnoringSafeArea(.bottom)
       
-            VStack {
-                Spacer()
+            //IF POI is selected, display Wikicard for it
+             if selectedWikiPOI != nil {
                 
-                if selectedWikiPOI != nil {
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.white)
-                            .frame(width: 400.0, height: 200.0, alignment: .bottom)
-                            .padding(.bottom, -40)
-                        Text(String(selectedWikiPOI?.title ?? "TODO Localization"))
-                            
-                    }
-                    
-                }
-                
+                WikiSlideOverCard (selectedWikiPOI: $selectedWikiPOI)
+                                    
             }
-        
-        
+            
+            if userWhereAbouts == nil {
+                Text("Fetching location....")
+            }
         }
     }
 }
+       
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
