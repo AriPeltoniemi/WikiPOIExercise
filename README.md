@@ -1,25 +1,46 @@
-
 # Exercise to display Wikipedia POIs in map
 
-For Maas Global 
+
 
 
 ## Architecture
 
-Chosed SwiftUI and Combine as I wanted to opportiny to learn those.  They are on early phases but looks once stabilized they will raise  iOS  development on new level. 
+I chose SwiftUI and Combine as those looks way to go on long term, Apple seems to be committed to those, so I wanted to use opportunity to learn those while doing this.  
 
-However I learned during this that those should not yet be used when yuo need interactive map with annotations. As there is no "native" SwiftUI support for those implementation is a bit hack, eventough according to Apple's guidelines. 
+However I learned while doing this exercise that those are not yet mature enough.  For this exercise the big issue was it those not yet properly support maps, annotations and location manager. It took a bit time how to use MKMapView, MKAnnotation… on SwiftUI side.
 
-Chosed Apples own location tools, map and annotations, MKMapView, MKAnnotation.... One reason being wanted to learn those and recommendation was to use native Apple as much possible.  Personally I am not big fan of Apple Map and if this would real application with also Android app, I would go with Google Maps. 
+The solution was to use UIViewRepresentable to make those available on SwiftUI. However annotations took even deeper approach and I use UIViewRepresentabled coordinator as Apple is guiding.  Peronally I think it is a bit on hack side.
+
+I chose Apple locations tools as this was iOS exercise. Personally I would go for Google map based solution as it could be used on Android side as well.
+
+## Maturity of SwiftUI & Combine
+
+I would not use those for real app yet. Documentation. Is not up to date, there has been a lot of changes how these work during last months and most of tutorials does not actually work. 
+
+## Basic flow
+
+ContentView is the main view which sets everything.
+
+First we start location manager and ask user location. MKMapView displays location but we also use “userWhereAbouts” ObservableObject to pass data for WIKI API URL coordinates.
+
+While waiting location we initialize map with user centered and appropriate span. 
+
+Once user location is found, we take coordinates and pass those on WikiAPIManager which fetches those from Wiki API. WikiAPIManager is an ObservableObject and publish WIKIPOIs to main view which is observing it.
+
+MKMapView displays those as annotation.
+
+When user selects one POI, “selectedWikiPOI” publishes that and main view opens slidable card for wiki page data.
+
+One wiki page data is fetched on WikiPageManager, another ObservableObject which publishes it when fetched asynchronously.
 
 
-##Requirements: 
+### Requirements: 
 
 Due to SwiftUi and Combine it takes Mac: Catalina  and Xcode 11.1 to run this.
 
 
 
-###Shortcuts
+### Shortcuts
 
 Due the nature as exercise and some limitation on how much time can spend with these,  there is some shorcuts which would need to be properly implemented if real application.
 
@@ -27,4 +48,13 @@ Due the nature as exercise and some limitation on how much time can spend with t
 
 -Hardcoded a lot of sizes
 
+-There is no tests. Normally there should be both unit and UI test. However I run out of time to implement any.
+
+### Missing pictures
+
+For some reason my Xcode does complain when creating Image(uiImage: UIImage) eventough accrding Apple documentation it should be like that and so shows few tutorials. Needed to comment out the picture fetching.
+
+### Am I proud?
+
+Not at all :(  I spent way way too much time with some compiler SwithUI oddies that I did not have time to refactor this to be a good quality code.
 
