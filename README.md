@@ -50,9 +50,6 @@ Due the nature as exercise and some limitation on how much time can spend with t
 
 -There is no tests. Normally there should be both unit and UI test. However I run out of time to implement any.
 
-### Missing pictures
-
-For some reason my Xcode does complain when creating Image(uiImage: UIImage) eventough accrding Apple documentation it should be like that and so shows few tutorials. Needed to comment out the picture fetching.
 
 ### Am I proud?
 
