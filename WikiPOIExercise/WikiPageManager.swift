@@ -15,7 +15,7 @@ import Combine
 
 //Struc for page data from WIKI API
 
-struct Image: Decodable {
+struct WikiImage: Decodable {
     let ns: Int?
     let title: String?
 }
@@ -24,7 +24,7 @@ struct Page:   Decodable {
     let pageid: Int
     let title: String
     let description: String?
-    let images: [Image]?
+    let images: [WikiImage]?
     init() {
         pageid = 0
         title = ""
