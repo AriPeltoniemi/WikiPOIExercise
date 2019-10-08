@@ -82,7 +82,7 @@ class WikiPageManager : ObservableObject {
             DispatchQueue.main.async {
                 self.page = page
                 self.pageFetched = true
-                print(page)
+                //print(page)
             }
         }.resume()
     }
