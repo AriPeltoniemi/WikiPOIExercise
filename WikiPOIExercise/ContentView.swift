@@ -37,21 +37,12 @@ struct ContentView: View {
     
     var body: some View {
 
-       
-        //wikiAPIManager.setCoordinates()
-        
-
+     
         ZStack {
 
             
             //Display full screen map with wiki POIs as annotations
-            //POIMapView(wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI, userWhereAbouts: $userWhereAbouts)
-            
             POIMapView(wikiAPIManager: wikiAPIManager, wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI, userWhereAbouts: $userWhereAbouts)
-            
-            
-            // POIMapView(wikiPOIs: $wikiAPIManager.wikiPOIs, selectedWikiPOI: $selectedWikiPOI)
-                         
                 .edgesIgnoringSafeArea(.top)
                 .edgesIgnoringSafeArea(.bottom)
       

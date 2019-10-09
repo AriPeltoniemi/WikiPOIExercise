@@ -35,6 +35,8 @@ struct WikiSlideOverCard : View {
     @ObservedObject var wikipageManager = WikiPageManager()
     
     var titleString: String?
+    
+    
     //---------------------------------------------
     // Display selected POI info on slidable card
     //---------------------------------------------
@@ -66,6 +68,8 @@ struct WikiSlideOverCard : View {
             ZStack (alignment: .top) {
                 ZStack (alignment: .top) {
                                  
+                    
+                //Background rectancle
                 RoundedRectangle(cornerRadius: 10.0)
                     .foregroundColor(.white)
                     
@@ -81,9 +85,7 @@ struct WikiSlideOverCard : View {
                         //Title
                         Text(String(selectedWikiPOI?.title ?? "TODO Localization"))
                      
-                        
-                        
-                        
+                        //DEscription if exists (API return some pages without description)
                         if wikipageManager.page != nil {
                             if wikipageManager.page.description != nil {
                             
@@ -103,20 +105,21 @@ struct WikiSlideOverCard : View {
                         
                             //Link to wiki page
                             if selectedWikiPOI?.title != nil {
-                                URLLink(aString: (selectedWikiPOI?.title)!)
+                                URLLink(pageTitle: (selectedWikiPOI?.title!)!)
                         
                             }
 
                             //If pictures, view for those
                             if wikipageManager.page.images!.count > 0 {
                                 
+                                //Displays ALL images (yes, I know name should be plural
                                 WikImageIView(images: wikipageManager.page.images)
                                 
                             }
                         }
                     }
                 }
-            }.onAppear(perform: doSomethingOnAppear)
+            }
             
         
         }
@@ -130,10 +133,6 @@ struct WikiSlideOverCard : View {
         .gesture(drag)
     }
     
-    func doSomethingOnAppear() {
-        print("Just testing .onApper()")
-        
-    }
     
     
     //-----------------------------------------------
@@ -174,23 +173,25 @@ struct WikiSlideOverCard : View {
 
 
 //------------------------------------------------------
-// URL Link view which opens page when pressed
+
+// URL Link to wiki page. Open in browser, implememted as Button
+
 //------------------------------------------------------
 
 struct URLLink : View {
-    var aString: String
+    var pageTitle: String
     
     var body: some View {
      
         //When link = button is presses it opens the wiki page in browser
         Button(action: {
-            let urlString = String("https://en.wikipedia.org/wiki/") + self.aString
+            let urlString = String("https://en.wikipedia.org/wiki/") + self.pageTitle
             let url: NSURL = URL(string: urlString)! as NSURL
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         
         })
         {
-            Text(verbatim: "https://en.wikipedia.org/wiki/" + aString)
+            Text(verbatim: "https://en.wikipedia.org/wiki/" + pageTitle)
         }
     }
 }

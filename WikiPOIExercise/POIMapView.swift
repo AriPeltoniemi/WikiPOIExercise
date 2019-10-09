@@ -48,7 +48,6 @@ class Coordinator: NSObject, MKMapViewDelegate {
     
     var found: Bool = false
 
-    
     let locationManager =  CLLocationManager()
        
 
@@ -57,11 +56,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
         _userWhereAbouts = userWhereAbouts
     }
 
-    /*
-    init(selectedWikiPOI: Binding<WikiPOI?>) {
-          _selectedWikiPOI = selectedWikiPOI
-      }
-    */
+    
+    //Her is the catch for application. This func is called when user selects POI = annotation from map. It sets the observed selectedWikiPOI which trigget the main view update. When it founds selected POI, it displays card for it
     
     func mapView(_ mapView: MKMapView,
                  didSelect view: MKAnnotationView) {
@@ -72,6 +68,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
               
     }
 
+    
+    //User unselects the POI
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         guard (view.annotation as? WikiPOI) != nil else {
             return
@@ -81,6 +79,9 @@ class Coordinator: NSObject, MKMapViewDelegate {
             mapView.removeOverlay(poll)
         }
     }
+    
+    
+    //Here we start location fetching.
     
     func mapViewDidFinishLoadingMap(_ view: MKMapView) {
         
@@ -100,7 +101,6 @@ class Coordinator: NSObject, MKMapViewDelegate {
     //User location updates
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
      
-    //    if userWhereAbouts?.userLocationFound == false {
         
         if found == false {
             let userWhere = UserWhereAbouts()
@@ -110,14 +110,10 @@ class Coordinator: NSObject, MKMapViewDelegate {
             
             found = true
         
-            //TODO: IF this would be real app, I would add tracking, eg when user moves we would fetch new WIKI POIs
+            //TODO: IF this would be real app, I would add tracking, eg when user moves we would fetch new WIKI POIs. For exersice we take user location just once
             locationManager.stopUpdatingLocation()
           
         }
-            
-            
-            //TODO: IF this would be real app, I would add tracking, eg when user moves we would fetch new WIKI POIs
-         
     }
     
    
@@ -134,14 +130,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
     
     func routeToWikiPOI(_ view: MKMapView, fromCoordinates: CLLocationCoordinate2D, toCoordinates: CLLocationCoordinate2D) {
       
-        //TODO käytä user locationia
-        let lahtocoordinate = CLLocationCoordinate2D(latitude: 60.1604818, longitude: 24.8715087)
-        
         
         let request = MKDirections.Request()
-      //  request.source = MKMapItem(placemark: MKPlacemark(coordinate: lahtocoordinate, addressDictionary: nil))
-      //  request.destination = MKMapItem(placemark: MKPlacemark(coordinate: selectedWikiPOI.coordinate, addressDictionary: nil))
-    
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: fromCoordinates, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: toCoordinates, addressDictionary: nil))
           
@@ -204,17 +194,18 @@ class Coordinator: NSObject, MKMapViewDelegate {
 
     
     //--------------------------------------------------------------------
+
+    // POIMapView as SwiftUI view startshere
     
+    
+    //--------------------------------------------------------------------
+
     
     @ObservedObject var wikiAPIManager: WikiAPIManager
     @Binding var wikiPOIs: [WikiPOI]
     @Binding var selectedWikiPOI: WikiPOI?
     @Binding var userWhereAbouts: UserWhereAbouts?
   
-    //Data from wiki API for page comes here. We observe it till URLSession fills it
-    //@ObservedObject var wikiAPIManager = WikiAPIManager()
-    
-    //@ObservedObject var wikiAPIManager = WikiAPIManager()
     
     var POIsFetched: Bool = false
     
@@ -223,12 +214,6 @@ class Coordinator: NSObject, MKMapViewDelegate {
         return Coordinator(selectedWikiPOI: $selectedWikiPOI, userWhereAbouts: $userWhereAbouts)
     }
     
-    /*
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(selectedWikiPOI: $selectedWikiPOI)
-    }
-     */
- 
  
     func makeUIView(context: Context) -> MKMapView {
         let view = MKMapView(frame: .zero)
@@ -258,7 +243,6 @@ class Coordinator: NSObject, MKMapViewDelegate {
         if userWhereAbouts != nil && selectedWikiPOI != nil {
          
             //We have user location AND selected POI -->Display route
-            //context.coordinator.routeToWikiPOI(view, selectedWikiPOI: selectedWikiPOI!)
             context.coordinator.routeToWikiPOI(view, fromCoordinates:  userWhereAbouts!.userCoordinates,  toCoordinates:  selectedWikiPOI!.coordinate)
             
         }

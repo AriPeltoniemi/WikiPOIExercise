@@ -13,7 +13,7 @@ import CoreLocation
 import Combine
 
 
-//Struc for page data from WIKI API
+//nested structs for page data from WIKI API
 
 struct WikiImage: Decodable {
     let ns: Int?
@@ -34,10 +34,19 @@ struct Page:   Decodable {
 }
 
 
+//--------------------------------------------
+// Fetch wiki page data as JSON from wiki API
+
+// Publish when done
+//--------------------------------------------
+
+
+
 class WikiPageManager : ObservableObject {
     var objectWillChange = PassthroughSubject<WikiPageManager, Never>()
 
     
+    //Make view aware there is page data
     @Published private(set) var page = Page() {
           didSet {
               objectWillChange.send(self)
@@ -56,7 +65,6 @@ class WikiPageManager : ObservableObject {
     
         let urlString = "https://en.wikipedia.org/w/api.php?action=query&prop=info%7Cdescription%7Cimages&pageids=" + String(pageid) + "&format=json"
         
-        print(urlString)
         
         guard let url = URL(string: urlString) else {
                    return
@@ -71,9 +79,7 @@ class WikiPageManager : ObservableObject {
             let dataString = String(data: data, encoding: .utf8)
             let range = dataString!.range(of: "{\"pageid")
             var riisuttu = dataString![range!.lowerBound..<dataString!.endIndex]
-            riisuttu.removeLast()
-            riisuttu.removeLast()
-            riisuttu.removeLast()
+            riisuttu.removeLast(3)
             
             //Decode page
             
@@ -82,7 +88,6 @@ class WikiPageManager : ObservableObject {
             DispatchQueue.main.async {
                 self.page = page
                 self.pageFetched = true
-                //print(page)
             }
         }.resume()
     }

@@ -17,6 +17,8 @@ import CommonCrypto
 
 // View to display wiki page images as list
 
+// (Yes, name should be plural)
+
 //---------------------------------------
 
 
@@ -85,6 +87,8 @@ struct ImageView: View {
 
 class ImageLoader: ObservableObject {
     var didChange = PassthroughSubject<Data, Never>()
+    
+    //Once downloaded, pass it on as data
     var data = Data() {
         didSet {
             didChange.send(data)
@@ -98,9 +102,9 @@ class ImageLoader: ObservableObject {
     init(title: String) {
    
     
-        //reverse engineered URL to 100px wiki image. Otherwise trivial BUT midle part is first and second characters of MD5 hashed trimmed fike name.
+        //reverse engineered URL to 100px wiki image. Otherwise trivial BUT midle part is first and second characters of MD5 hashed trimmed file name.
         
-        //Proper solution would be to query URL from WIki API based on imege title. This wasn now a quicker way to get images u and running
+        //Proper solution would be to query URL from WIki API based on imege title. This wasn now a quicker way to get images up and running
         
         var trimmedImageName: String = title.replacingOccurrences(of: " ", with: "_")
         trimmedImageName.removeFirst(5)
@@ -113,7 +117,8 @@ class ImageLoader: ObservableObject {
         if fileSuffix == "svg" {
             imageURL = imageURL + ".png"
         }
-        //reverse engineering ends
+        //reverse engineering url ends
+        
         
         //Now actual image load
         
