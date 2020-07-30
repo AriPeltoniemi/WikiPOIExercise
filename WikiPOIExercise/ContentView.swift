@@ -6,8 +6,8 @@
 //  Copyright © 2019 Ari Peltoniemi. All rights reserved.
 //
 //********************************
-// ARI TEST IntelliJ github.....
-//********************************
+// ARI TEST IntelliJ github.........
+//***********************************
 
 
 
